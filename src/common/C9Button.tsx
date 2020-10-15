@@ -10,9 +10,6 @@ import {
 
 import C9Colors from './C9Colors';
 import C9Fonts from "./C9Fonts";
-import img1 from '../img/icon-back.png'
-import img2 from '../img/icon-back-android.png';
-import img3 from '../img/nav-close.png';
 
 type Props = {
   text?: string,
@@ -64,11 +61,11 @@ export function PillButton({style, textStyle, imageStyle, ...props}: Props) {
 
 export function BackButton({style, textStyle, text, ...props}: Props) {
   var backIcon = (Platform.OS === 'ios' ?
-                  img1 : img2);
+                  require('../img/icon-back.png') : require('../img/icon-back-android.png'));
   return (
     <C9Button
       text={ text != null ? text : "Back" }
-      image={{uri: backIcon}}
+      image={backIcon}
       style={[styles.backButton, style]}
       textStyle={[styles.backText, textStyle]}
       {...props}
@@ -80,7 +77,7 @@ export function CloseButton({style, textStyle, ...props}: Props) {
   return (
     <C9Button
       text=""
-      image={{uri: require('../img/nav-close.png')}}
+      image={require('../img/nav-close.png')}
       style={[styles.closeButton, style]}
       textStyle={[styles.backText, textStyle]}
       {...props}

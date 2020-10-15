@@ -20,10 +20,7 @@ export default function Home() {
                 text={'Submit'}
                 onPress={() => window.location.href = 'https://glowing.com'}
             />
-            <CloseButton imageStyle={{
-                width: 24,
-                height: 24,
-            }}/>
+            <CloseButton />
         </View>
     );
 }
