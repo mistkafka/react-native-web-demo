@@ -11,9 +11,9 @@ import {
 } from "react-native";
 import _ from "lodash";
 import moment from 'moment';
-import img1 from './img/ca-form/hiq_John_Hancock.png';
-import img2 from './img/ca-form/hiq_mutual-omaha.png';
-import img3 from './img/ca-form/hiq_prudential-7.png';
+import img1 from '../img/ca-form/hiq_John_Hancock.png';
+import img2 from '../img/ca-form/hiq_mutual-omaha.png';
+import img3 from '../img/ca-form/hiq_prudential-7.png';
 
 const SemiboldText = Text;
 

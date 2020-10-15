@@ -1,19 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { renderRoutes } from 'react-router-config';
+import routes from './route';
+import { BrowserRouter as Router } from "react-router-dom";
 
-export default function App() {
-  return (
-      <View style={styles.root}>
-        <Text>{'hello, react-native-web'}</Text>
-      </View>
-  );
-}
+const App: React.FC = () => {
+    return (
+        <Router>
+            {renderRoutes(routes)}
+        </Router>
+    );
+};
 
-const styles = StyleSheet.create({
-    root: {
-        height: '100vh',
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-})
+export default App;
