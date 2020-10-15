@@ -6,10 +6,13 @@ import {
   Image,
   StyleSheet,
   Platform,
-  TouchableNativeFeedback
 } from 'react-native';
 
 import C9Colors from './C9Colors';
+import C9Fonts from "./C9Fonts";
+import img1 from '../img/icon-back.png'
+import img2 from '../img/icon-back-android.png';
+import img3 from '../img/nav-close.png';
 
 type Props = {
   text?: string,
@@ -60,12 +63,12 @@ export function PillButton({style, textStyle, imageStyle, ...props}: Props) {
 }
 
 export function BackButton({style, textStyle, text, ...props}: Props) {
-  var backIcon = (Platform.OS == 'ios' ?
-                  require('../img/icon-back.png') : require('../img/icon-back-android.png'));
+  var backIcon = (Platform.OS === 'ios' ?
+                  img1 : img2);
   return (
     <C9Button
       text={ text != null ? text : "Back" }
-      image={backIcon}
+      image={{uri: backIcon}}
       style={[styles.backButton, style]}
       textStyle={[styles.backText, textStyle]}
       {...props}
@@ -74,11 +77,10 @@ export function BackButton({style, textStyle, text, ...props}: Props) {
 }
 
 export function CloseButton({style, textStyle, ...props}: Props) {
-  var backIcon = require('../img/nav-close.png');
   return (
     <C9Button
       text=""
-      image={backIcon}
+      image={{uri: require('../img/nav-close.png')}}
       style={[styles.closeButton, style]}
       textStyle={[styles.backText, textStyle]}
       {...props}
@@ -124,7 +126,7 @@ export default class C9Button extends Component<Props, State> {
       txtStyles.push({ color: tintColor });
     }
     var textEl = (
-      <Text style={txtStyles} numberOfLines={this.props.numberOfLines}>{text}</Text>
+      <Text style={[C9Fonts.boldFont, txtStyles]} numberOfLines={this.props.numberOfLines}>{text}</Text>
     );
 
     if(Platform.OS === 'ios') {
@@ -147,9 +149,8 @@ export default class C9Button extends Component<Props, State> {
       );
     } else {
       return (
-        <TouchableNativeFeedback
+        <TouchableOpacity
           disabled={this.props.disabled}
-          background={TouchableNativeFeedback.SelectableBackground()}
           onPress={this._onPress.bind(this)}
           onPressIn={this.props.onPressIn}
           onPressOut={this.props.onPressOut}
@@ -158,7 +159,7 @@ export default class C9Button extends Component<Props, State> {
             {imageEl}
             {textEl}
           </View>
-        </TouchableNativeFeedback>
+        </TouchableOpacity>
       );
     }
 
